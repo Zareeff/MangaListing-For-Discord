@@ -16,13 +16,23 @@ def getinfo0():
     val10 = input_text10.get()
     val11 = input_text11.get()
     val12 = input_text12.get()
-    
-    output_text.config(text=f"-# **||**{type}**||** \n-#*{read_time}*")
-                       
-    if favourite == "yes":
-        output_text.cof(text=f"# {favourite}")
+
+
+    entry = input_text9.get().strip().lower()
+    if entry == "yes":
+        display_name = f"# {name}"
+    elif entry == "no":
+       display_name = f"## {name}"
+    elif entry == "":
+        display_name = f"## {name}" 
     else:
-        output_text(text=f"## {favourite}")
+        display_name = f"# {name}"  
+    
+
+    output_text.config(text=f"-# **||**{type}**||** \n-#*{read_time}* \n {display_name} \n**||** By [{author}]({author_twitter}) **||‌**")
+
+       
+
 
 window = tk.Tk()
 window.title("DEMO")
@@ -34,75 +44,79 @@ window.grid_columnconfigure(1, weight=1)
 
 
 label = tk.Label(window, bg="#121212", foreground="#FAFAFA", text="DEMO", font=("arial", 10))
-label.grid(row=1, column=1)
+label.grid(row=1, column=1, sticky="w")
 
 label2 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Enter all the Informations", font=("Arial", 10))
-label2.grid(row=2, column=1)
+label2.grid(row=2, column=1,  sticky="w")
 
 
-label3 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Type", font=("Arial", 10))
-label3.grid(row=3, column=0)
-label4 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Start reading time", font=("Arial", 10))
-label4.grid(row=4, column=0)
+label3 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Type (Manga/Manhwa)", font=("Arial", 11))
+label3.grid(row=3, column=0, sticky="e")
+label4 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Start reading time (m/d/y)", font=("Arial", 10))
+label4.grid(row=4, column=0, sticky="e")
 label5 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Name", font=("Arial", 10))
-label5.grid(row=5, column=0)
-label6 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="By", font=("Arial", 10))
-label6.grid(row=6, column=0)
-
+label5.grid(row=5, column=0, sticky="e")
+label6 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label6.grid(row=6, column=0, sticky="e")
+label7 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label7.grid(row=7, column=0, sticky="e")
+label8 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label8.grid(row=8, column=0, sticky="e")
 
 input_text0 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text0.grid(row=3, column=1,)
+input_text0.grid(row=3, column=1, columnspan="2", sticky="w")
 
 input_text1 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text1.grid(row=4, column=1)
+input_text1.grid(row=4, column=1, columnspan="2", sticky="w")
 
 input_text2 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text2.grid(row=5, column=1)
+input_text2.grid(row=5, column=1, columnspan="2", sticky="w")
 
 input_text3 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text3.grid(row=7, column=1)
+input_text3.grid(row=7, column=1,  columnspan="2", sticky="w")
 
 input_text4 = tk.Entry(window, width=40, font=("Arial", 11), justify="center")
-input_text4.grid(row=8, column=1,)
+input_text4.grid(row=8, column=1, columnspan="2", sticky="w")
 
 input_text5 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text5.grid(row=9, column=1)
+input_text5.grid(row=9, column=1, columnspan="2", sticky="w")
 
 input_text6 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text6.grid(row=10, column=1)
+input_text6.grid(row=10, column=1, columnspan="2", sticky="w")
 
 input_text7 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text7.grid(row=11, column=1)
+input_text7.grid(row=11, column=1, columnspan="2", sticky="w")
 
 input_text8 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text8.grid(row=12, column=1)
+input_text8.grid(row=12, column=1, columnspan="2", sticky="w")
 
 input_text9 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text9.grid(row=13, column=1)
+input_text9.grid(row=13, column=1, columnspan="2", sticky="w")
 
 input_text10= tk.Entry(window, width=40, font=("Arial", 11))
-input_text10.grid(row=14, column=1)
+input_text10.grid(row=14, column=1, columnspan="2", sticky="w")
 
 input_text11 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text11.grid(row=15, column=1)
+input_text11.grid(row=15, column=1, columnspan="2", sticky="w")
 
 input_text12 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text12.grid(row=16, column=1)
+input_text12.grid(row=16, column=1, columnspan="2", sticky="w")
 
 input_text13 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text13.grid(row=17, column=1)
+input_text13.grid(row=17, column=1, columnspan="2", sticky="w")
 
 
 
 enterbtn = ttk.Button(window, text="Done", command=getinfo0)
-enterbtn.grid(row=20, column=1)
+enterbtn.grid(row=20, column=1, columnspan="2", sticky="w")
 
 output_text = tk.Label(window, bg="#121212", fg="#FAFAFA", font=("Arial", 11))
-output_text.grid(row=3, column=2)
+output_text.grid(row=21, column=1, sticky="n")
 
 
 
 window.mainloop()
+
 
 
 
