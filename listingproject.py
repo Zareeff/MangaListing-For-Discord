@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
+import pyperclip 
 
 def getinfo0():
     type = input_text0.get()
@@ -8,8 +9,8 @@ def getinfo0():
     name = input_text2.get()
     author = input_text3.get()
     author_twitter = input_text4.get()
-    writter = input_text5.get()
-    writter_twitter = input_text6.get()
+    art_author = input_text5.get()
+    art_author_twitter = input_text6.get()
     genre = input_text7.get()
     read_number = input_text8.get()
     favourite = input_text9.get()
@@ -28,19 +29,20 @@ def getinfo0():
     else:
         display_name = f"# {name}"  
     
+    words = genre.split()
+    words = [w.capitalize() for w in words] 
+    genres = '-# **|** ' + ' **|** '.join(words) + ' **|**'
 
-    output_text.config(text=f"-# **||**{type}**||** \n-#*{read_time}* \n {display_name} \n**||** By [{author}]({author_twitter}) **||‌**")
 
-       
+    output_text.config(text=f"-# **||**{type}**||** \n-# *{read_time}* \n{display_name} \n**||** By [{author}]({author_twitter}) **||‌** \n**||** Art By [{art_author}]({art_author_twitter}) \n**Genre:** \n{genres}")
 
-
+    
 window = tk.Tk()
 window.title("DEMO")
 window.configure(bg="#121212")
 window.geometry("600x400+100+200")
 
 window.grid_columnconfigure(1, weight=1)
-
 
 
 label = tk.Label(window, bg="#121212", foreground="#FAFAFA", text="DEMO", font=("arial", 10))
@@ -56,12 +58,25 @@ label4 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Start reading time (
 label4.grid(row=4, column=0, sticky="e")
 label5 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Name", font=("Arial", 10))
 label5.grid(row=5, column=0, sticky="e")
-label6 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label6 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Author name", font=("Arial", 10))
 label6.grid(row=6, column=0, sticky="e")
-label7 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label7 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Author Twitter Account link", font=("Arial", 10))
 label7.grid(row=7, column=0, sticky="e")
-label8 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this Manga/Manhwa your Favourite? (yes/no/)", font=("Arial", 10))
+label8 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Artist name (Leave black if none)", font=("Arial", 10))
 label8.grid(row=8, column=0, sticky="e")
+label9 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Artist T witter Account Link", font=("Arial", 10))
+label9.grid(row=9, column=0, sticky="e")
+label10= tk.Label(window, bg="#121212", fg="#FAFAFA", text="Genre (split them by space ( ))", font=("Arial", 10))
+label10.grid(row=10, column=0, sticky="e")
+label11 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Number", font=("Arial", 10))
+label11.grid(row=11, column=0, sticky="e")
+label12 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this your favourite (yes/no or leave black for no)", font=("Arial", 10))
+label12.grid(row=12, column=0, sticky="e")
+label13 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="", font=("Arial", 10))
+label13.grid(row=13, column=0, sticky="e")
+label14 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="", font=("Arial", 10))
+label14.grid(row=14, column=0, sticky="e")
+
 
 input_text0 = tk.Entry(window, width=40, font=("Arial", 11))
 input_text0.grid(row=3, column=1, columnspan="2", sticky="w")
@@ -73,51 +88,53 @@ input_text2 = tk.Entry(window, width=40, font=("Arial", 11))
 input_text2.grid(row=5, column=1, columnspan="2", sticky="w")
 
 input_text3 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text3.grid(row=7, column=1,  columnspan="2", sticky="w")
+input_text3.grid(row=6, column=1,  columnspan="2", sticky="w")
 
-input_text4 = tk.Entry(window, width=40, font=("Arial", 11), justify="center")
-input_text4.grid(row=8, column=1, columnspan="2", sticky="w")
+input_text4 = tk.Entry(window, width=40, font=("Arial", 11))
+input_text4.grid(row=7, column=1, columnspan="2", sticky="w")
 
 input_text5 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text5.grid(row=9, column=1, columnspan="2", sticky="w")
+input_text5.grid(row=8, column=1, columnspan="2", sticky="w")
 
 input_text6 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text6.grid(row=10, column=1, columnspan="2", sticky="w")
+input_text6.grid(row=9, column=1, columnspan="2", sticky="w")
 
 input_text7 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text7.grid(row=11, column=1, columnspan="2", sticky="w")
+input_text7.grid(row=10, column=1, columnspan="2", sticky="w")
 
 input_text8 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text8.grid(row=12, column=1, columnspan="2", sticky="w")
+input_text8.grid(row=11, column=1, columnspan="2", sticky="w")
 
 input_text9 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text9.grid(row=13, column=1, columnspan="2", sticky="w")
+input_text9.grid(row=12, column=1, columnspan="2", sticky="w")
 
 input_text10= tk.Entry(window, width=40, font=("Arial", 11))
-input_text10.grid(row=14, column=1, columnspan="2", sticky="w")
+input_text10.grid(row=13, column=1, columnspan="2", sticky="w")
 
 input_text11 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text11.grid(row=15, column=1, columnspan="2", sticky="w")
+input_text11.grid(row=14, column=1, columnspan="2", sticky="w")
 
 input_text12 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text12.grid(row=16, column=1, columnspan="2", sticky="w")
+input_text12.grid(row=15, column=1, columnspan="2", sticky="w")
 
 input_text13 = tk.Entry(window, width=40, font=("Arial", 11))
-input_text13.grid(row=17, column=1, columnspan="2", sticky="w")
-
+input_text13.grid(row=16, column=1, columnspan="2", sticky="w")
 
 
 enterbtn = ttk.Button(window, text="Done", command=getinfo0)
 enterbtn.grid(row=20, column=1, columnspan="2", sticky="w")
 
+def copy_output():
+    output = output_text.cget("text")     
+    pyperclip.copy(output)
+
+copybtn = ttk.Button(window, text="Copy Text", command=copy_output)
+copybtn.grid(row=20, column=2, columnspan="2", sticky="w")
+
 output_text = tk.Label(window, bg="#121212", fg="#FAFAFA", font=("Arial", 11))
-output_text.grid(row=21, column=1, sticky="n")
+output_text.grid(row=21, column=1, sticky="w")
+
 
 
 
 window.mainloop()
-
-
-
-
-
