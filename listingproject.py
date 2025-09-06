@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import pyperclip 
 
+
 def getinfo0():
     type = input_text0.get()
     read_time = input_text1.get()
@@ -14,27 +15,40 @@ def getinfo0():
     genre = input_text7.get()
     read_number = input_text8.get()
     favourite = input_text9.get()
-    val10 = input_text10.get()
+    favourite_genre = input_text10.get()
     val11 = input_text11.get()
     val12 = input_text12.get()
 
 
     entry = input_text9.get().strip().lower()
     if entry == "yes":
+        favourite2 = "## favourite"
+        favourite_genre = f"-#  {favourite_genre}"
         display_name = f"# {name}"
+        word = favourite_genre.split()
+        word = [w.capitalize() for w in word] 
+        favourite_genress = '-# **|** ' + ' **|** '.join(word) + ' **|**'
     elif entry == "no":
-       display_name = f"## {name}"
+        favourite2 = ""
+        favourite_genress = ""
+        display_name = f"## {name}"
     elif entry == "":
+        favourite2 = ""
+        favourite_genress = ""
         display_name = f"## {name}" 
     else:
         display_name = f"# {name}"  
-    
+        favourite_genress = ""    
+
     words = genre.split()
     words = [w.capitalize() for w in words] 
-    genres = '-# **|** ' + ' **|** '.join(words) + ' **|**'
+    genres = '-# **||** ' + ' **||** '.join(words) + ' **||**'
+
+    
 
 
-    output_text.config(text=f"-# **||**{type}**||** \n-# *{read_time}* \n{display_name} \n**||** By [{author}]({author_twitter}) **||‌** \n**||** Art By [{art_author}]({art_author_twitter}) \n**Genre:** \n{genres}")
+
+    output_text.config(text=f"-# **||**{type}**||** \n-# *{read_time}* \n{display_name} \n**||** By [{author}]({author_twitter}) **||‌** \n**||** Art By [{art_author}]({art_author_twitter}) \n**Genre:** \n{genres} \n**{read_number}** \n{favourite2} \n{favourite_genress}")
 
     
 window = tk.Tk()
@@ -72,7 +86,7 @@ label11 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Number", font=("Ari
 label11.grid(row=11, column=0, sticky="e")
 label12 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="Is this your favourite (yes/no or leave black for no)", font=("Arial", 10))
 label12.grid(row=12, column=0, sticky="e")
-label13 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="", font=("Arial", 10))
+label13 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="favourite genres (if youve said yes to 'favoit')")
 label13.grid(row=13, column=0, sticky="e")
 label14 = tk.Label(window, bg="#121212", fg="#FAFAFA", text="", font=("Arial", 10))
 label14.grid(row=14, column=0, sticky="e")
